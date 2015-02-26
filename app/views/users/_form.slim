@@ -1,0 +1,19 @@
+= form_for(@user) do |f|
+    div.field
+        = f.label :name
+        = f.text_field :name, required: true
+
+    div.field
+        = f.label :email
+        = f.text_field :email, required: true
+
+    div.actions
+        = f.submit "Finish"
+
+    - if @user.errors.any?
+        .flash-error
+        span== pluralize(@user.errors.count, "error")
+            | prohibited this user from being saved
+        ul
+        - @user.errors.full_messages.each do |message|
+            li== message

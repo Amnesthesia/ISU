@@ -1,0 +1,111 @@
+// Place all the styles related to the applications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bourbon";
+@import "neat";
+
+.center-wrapper
+{
+    width: 100%;
+    background: #DDD;
+    border-bottom: 10px solid rgba(141, 209, 230, 0.68);
+    .center
+    {
+        @include outer-container;
+
+        .positions
+        {
+            @include span-columns(12);
+            min-height: 200px;
+
+            .position
+            {
+
+                background-repeat: no-repeat;
+                background-position: center top;
+
+                &:first-child
+                {
+                    border-left: 1px solid #CCC;
+                }
+                @include span-columns(2.4);
+                height: 200px;
+                border-right: 1px solid #CCC;
+
+                float: left;
+
+                .position-title
+                {
+                    label
+                    {
+                        margin: 0;
+                        padding: 0;
+                    }
+                    margin-top: 145px;
+                    font-size: 12pt;
+                    text-align: center;
+                    color: #555;
+                }
+                .position-check
+                {
+
+                    text-align: center;
+                    width: 100%;
+                    background: transparent;
+                    border: none;
+                }
+                input[type="checkbox"]
+                {
+                    text-align: center;
+
+                }
+                label
+                {
+                    clear: both;
+                    font-size: 12pt;
+                }
+            }
+
+            .position.woman
+            {
+                background-image: image-url('woman-suit.png');
+                background-size: auto 70%;
+            }
+            .position.man
+            {
+                background-image: image-url('man-suit.png');
+                background-size: auto 75%;
+            }
+        }
+    }
+}
+
+main
+{
+    .content.large
+    {
+        padding-top: 20px;
+        color: #555;
+        @include span-columns(12);
+        @include shift(0);
+
+        .letter
+        {
+            @include span-columns(8);
+            @include shift(2);
+            textarea
+            {
+                width: 100%;
+                height: 300px;
+            }
+        }
+
+        .actions
+        {
+            @include span-columns(2);
+            @include shift(5);
+            margin-top: 50px;
+
+        }
+    }
+}

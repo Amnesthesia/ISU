@@ -1,0 +1,46 @@
+- content_for :center
+    = form_for @application do |f|
+        - if @application.errors.any?
+            .flash-error
+                = pluralize(@application.errors.count, "error") + " found in your application :("
+
+                ul
+                    - @application.errors.full_messages.each do |m|
+                        li== m
+
+
+        .center-wrapper
+            .center
+                .positions
+                    - @positions.shuffle().each_with_index do |position,i|
+                        - if i % 2 == 0
+                            .position.woman(class==position.title.downcase.split().join('-'))
+                                .position-title
+                                    = f.label :position_ids, position.title.gsub('Assistant', 'Asst.')
+                                .position-check.tooltip-item
+                                    = f.check_box(:position_ids, {multiple: true}, position.id, nil)
+                                    .tooltip
+                                        p==position.description
+
+                        - else
+                            .position.man(class==position.title.downcase.split().join('-'))
+
+                                .position-title
+                                    = f.label :position_ids, position.title.gsub('Assistant', 'Asst.')
+
+                                .position-check.tooltip-item
+                                    = f.check_box(:position_ids, {multiple: true}, position.id, nil)
+                                    .tooltip
+                                        p==position.description
+
+
+
+        main
+            .content.large
+                .letter
+                    = f.label :message, 'Letter'
+                    = f.text_area :message, class: "tinymce", id: "letter"
+
+                .actions
+                    = f.submit
+            = tinymce

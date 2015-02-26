@@ -1,0 +1,27 @@
+.content
+    .header
+        .profile_picture
+            = image_tag(@user.profile_picture.path)
+        .name
+            - if @user.profile_url.nil?
+                h1== @user.name
+            - else
+                h1== link_to @user.profile_url, @user.name
+        .positions
+            - if not @user.application.nil?
+                ul
+                    - @user.application.positions.each do |position|
+                        li==position.title
+                - if @user == current_user
+                    = link_to edit_application_path(@user.application) do
+                        = button_tag("Edit Application")
+            - elsif @user.application.nil?
+                = link_to new_application_path do
+                    = button_tag("Write Application")
+            - if @user == current_user
+                = link_to user_finish_path(@user) do
+                    = button_tag("Edit email")
+
+    .body
+        - if not @user.application.nil?
+            = @user.application.message.html_safe

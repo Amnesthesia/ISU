@@ -1,0 +1,191 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+@import "bourbon";
+@import "base/base";
+@import "neat";
+@import "applications";
+@import "positions";
+@import 'foundation-icons';
+@import "applications";
+@import "refills/tooltip";
+
+
+body
+{
+    background: #EEE;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+
+    header
+    {
+        background-color: desaturate(darken(#75D6E8, 20), 15);
+        //background-color: desaturate(#52D6EF, 25);
+        height: 500px;
+        //border-bottom: 10px solid lighten(#23B9D7, 30);
+        border-bottom: 10px solid #8DD1E6;
+        background-image: image-url('isulogo.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 450px auto;
+    }
+
+    main
+    {
+        @include outer-container();
+
+        font-family: serif, Verdana;
+        font-size: 14pt;
+        line-height: 1.5;
+        color: #333;
+
+        table
+        {
+            td:first-child, th:first-child
+            {
+                width: 80px;
+
+                img
+                {
+                    border: 3px solid #CCC;
+                    margin: 2px;
+                }
+            }
+        }
+        .action-buttons
+        {
+            @include span-columns(4);
+            @include shift(4);
+            text-align: center;
+
+            i, i:visited, i:active
+            {
+                font-size: 3em;
+                margin-right: 1em;
+                margin-left: 1em;
+                color: darken(#23B9D7, 15);
+
+                &:hover
+                {
+                    color: #23B9D7;
+                }
+            }
+
+            a:first-child > i
+            {
+
+                margin-left: 0;
+            }
+        }
+
+        .content
+        {
+
+            h1,h2
+            {
+                color: #454545;
+                font-size: x-large;
+            }
+
+            .header
+            {
+                @include span-columns(12);
+                .profile_picture
+                {
+                    @include span-columns(3);
+                    height: 200px;
+                    width: 200px;
+                    img
+                    {
+                        width: 100%;
+                        border: 5px solid #CCC;
+                        margin: 5px;
+                    }
+                }
+
+                .name
+                {
+                    @include span-columns(8);
+                    h1
+                    {
+                        text-align: right;
+                        font-size: 3em;
+                        border-bottom: 1px solid #ccc;
+                        padding-bottom: 10px;
+                        margin-bottom: 0px;
+                    }
+                }
+
+                .positions
+                {
+                    @include span-columns(8);
+
+                    button
+                    {
+                        float: right;
+                        width: 40%;
+                        margin-right: 10px;
+                        margin-top: 30px;
+                    }
+
+                    ul
+                    {
+                        list-style: none;
+                        float: right;
+
+                        li
+                        {
+                            font-size: initial;
+                            display: inline;
+                            color: #757575;
+
+                            &:after
+                            {
+                                content: " | ";
+                            }
+                        }
+
+                        li:last-child
+                        {
+                            &:after
+                            {
+                                content: '';
+                            }
+                        }
+                    }
+                }
+
+            }
+            .body
+            {
+                @include span-columns(12);
+                padding: 20px;
+                margin-top: 10px;
+                border-top: 1px solid #ECECEC;
+            }
+            label
+            {
+                color: #555;
+            }
+            padding-top: 20px;
+            @include shift(2.5);
+            @include span-columns(7);
+            input[type="submit"]
+            {
+                width: 100%;
+                margin-top: 30px;
+            }
+        }
+    }
+}

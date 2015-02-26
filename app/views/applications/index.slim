@@ -1,0 +1,23 @@
+
+table.table
+    thead
+        tr
+            th=""
+            th="Name"
+            th="Email"
+            th="Network"
+            th="Positions"
+    tbody
+        - @users.each do |user|
+            tr
+                td== image_tag(user.profile_picture.path)
+                td== link_to user.name, user_path(user)
+                td== user.email
+                td== link_to user.provider.capitalize, user.profile_url
+                - if user.application
+                    td
+                        ul
+                            - user.application.positions.each do |p|
+                                li== p.title
+                - else
+                    td="N/A"

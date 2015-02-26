@@ -1,0 +1,20 @@
+.positions
+    - unless user_signed_in?
+        .action-buttons
+            = link_to user_omniauth_authorize_path(:facebook) do
+                i.fi-social-facebook
+            = link_to user_omniauth_authorize_path(:tumblr) do
+                i.fi-social-tumblr
+            = link_to user_omniauth_authorize_path(:twitter) do
+                i.fi-social-twitter
+
+.content.message
+    p
+        | Every 6 months the ISU re-elects board-members, and the time has come for
+        | a new re-election. Due to lack of interest in a physical re-election as was
+        | first attempted, the local ISU branch at the ISU Gjøvik University College
+        | has decided to instead accept applications for all free positions.
+        | To apply for the ISU, just click your preferred social media icon, and
+        | check what positions you'd be interested in, and just write a personal
+        | letter.
+        | The process is easy, click the icon to get started!
