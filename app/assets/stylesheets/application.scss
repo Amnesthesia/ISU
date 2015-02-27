@@ -51,6 +51,10 @@ body
         line-height: 1.5;
         color: #333;
 
+        h1,h2
+        {
+            margin-top: 20px;
+        }
         table
         {
             td:first-child, th:first-child
@@ -101,12 +105,16 @@ body
 
             .header
             {
+                h1,h2
+                {
+                    margin-top: 5px;
+                }
                 @include span-columns(12);
                 .profile_picture
                 {
                     @include span-columns(3);
-                    height: 200px;
-                    width: 200px;
+                    height: auto;
+                    margin-right: 10px;
                     img
                     {
                         width: 100%;
@@ -118,6 +126,7 @@ body
                 .name
                 {
                     @include span-columns(8);
+                    margin-right: 0px;
                     h1
                     {
                         text-align: right;

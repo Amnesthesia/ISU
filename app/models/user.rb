@@ -11,6 +11,12 @@ class User < ActiveRecord::Base
     def self.find_for_oauth(auth, signed_in_resource=nil)
       puts auth.to_json
       img = Image.where(path: auth.info.image||auth.info.avatar, profile_picture: true).first_or_create
+
+      if auth.provider.downcase == 'facebook'
+            img.path = img.path+"?type=large"
+            img.save
+      end
+
       user = signed_in_resource ? signed_in_resource : User.where(uid: auth.uid, provider: auth.provider).first
       email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
       email = auth.info.email if email_is_verified
